@@ -76,7 +76,11 @@ public class Task {
             parentSizes.add(totalSizeOfFile(files, parentId));
         }
         
-        return parentSizes.stream().max((n1, n2) -> n1.compareTo(n2)).get();
+        int maxsize = 0;
+        for (int size : parentSizes) {
+            maxsize = Math.max(maxsize, size);
+        }
+        return maxsize;
     }
 
     // Finds any files listed as a parent and removes them from the list
